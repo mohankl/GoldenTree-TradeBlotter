@@ -1,0 +1,182 @@
+<!doctype html>
+<!--
+  GitHub Pages landing page for the GoldenTree Trade Blotter.
+  Configure Pages to serve from the root of the default branch (Settings → Pages
+  → Source: Deploy from a branch → main → /root). Self-contained: inline CSS,
+  no external assets, works offline.
+-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GoldenTree · Trade Blotter</title>
+    <meta name="description" content="A full-stack trade blotter — .NET 10 API + Vue 3 SPA with derived positions and average-cost logic." />
+    <style>
+      :root {
+        --gold: #c9a227;
+        --gold-bright: #d4af37;
+        --gold-soft: #e6c868;
+        --green: #0f3d2e;
+        --green-mid: #1b5e43;
+        --green-bright: #2e8b63;
+        --buy: #22c55e;
+        --sell: #ef4444;
+        --bg: #0b0f14;
+        --surface: #131a22;
+        --surface-2: #1b2530;
+        --border: #263241;
+        --text: #e6eaf0;
+        --text-muted: #9aa7b4;
+        --text-faint: #64748b;
+        --mono: "SF Mono", "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+        --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: radial-gradient(1200px 600px at 50% -10%, #12100a 0%, var(--bg) 55%);
+        color: var(--text);
+        font-family: var(--sans);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--gold-soft); text-decoration: none; }
+      a:hover { color: var(--gold-bright); }
+      .wrap { max-width: 960px; margin: 0 auto; padding: 0 22px; }
+
+      /* Hero */
+      header { text-align: center; padding: 72px 0 40px; }
+      .mark {
+        width: 64px; height: 64px; margin: 0 auto 20px; display: flex;
+        align-items: center; justify-content: center; border-radius: 16px;
+        background: #12100a; border: 1px solid #3a3016;
+      }
+      h1 { font-size: clamp(30px, 6vw, 48px); margin: 0 0 6px; letter-spacing: -0.01em; }
+      h1 .accent { color: var(--gold); }
+      .tagline { color: var(--text-muted); font-size: clamp(15px, 2.5vw, 19px); max-width: 620px; margin: 0 auto 26px; }
+      .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+      .btn {
+        display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px;
+        border-radius: 9px; font-weight: 600; font-size: 15px; border: 1px solid var(--border);
+      }
+      .btn--primary { background: linear-gradient(180deg, var(--gold-soft), var(--gold)); color: #1a1400; border-color: transparent; }
+      .btn--ghost { background: var(--surface); color: var(--text); }
+      .btn--ghost:hover { border-color: var(--gold); }
+
+      /* Badges */
+      .badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 30px 0 10px; }
+      .badge {
+        font-family: var(--mono); font-size: 12px; color: var(--text-muted);
+        background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px;
+      }
+
+      section { padding: 34px 0; }
+      h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-soft); margin: 0 0 18px; }
+
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+      .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+      .card h3 { margin: 0 0 8px; font-size: 16px; }
+      .card p { margin: 0; color: var(--text-muted); font-size: 14px; }
+      .card .ico { font-size: 20px; margin-bottom: 10px; display: block; }
+
+      /* Example block */
+      .example { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; font-family: var(--mono); font-size: 13.5px; overflow-x: auto; }
+      .example .step { color: var(--text-muted); }
+      .example .buy { color: var(--buy); }
+      .example .sell { color: var(--sell); }
+      .example .res { color: var(--gold-soft); }
+
+      .stats { display: flex; gap: 26px; flex-wrap: wrap; justify-content: center; }
+      .stat { text-align: center; }
+      .stat .n { font-family: var(--mono); font-size: 30px; color: var(--gold); font-weight: 700; }
+      .stat .l { font-size: 12px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.08em; }
+
+      footer { text-align: center; padding: 40px 0 60px; color: var(--text-faint); font-size: 13px; border-top: 1px solid var(--border); margin-top: 20px; }
+      .links { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="38" height="38" fill="none">
+            <path d="M12 2c2.5 2.2 4 4.6 4 7.2A4 4 0 0 1 12 13a4 4 0 0 1-4-3.8C8 6.6 9.5 4.2 12 2Z" fill="var(--gold)" />
+            <path d="M11 12h2v9h-2z" fill="var(--green-bright)" />
+            <path d="M12 16c-1.6-1-3-1.4-4.4-1.3.5 1.6 2 2.6 4.4 2.6z" fill="var(--green-bright)" />
+          </svg>
+        </div>
+        <h1><span class="accent">GoldenTree</span> · Trade Blotter</h1>
+        <p class="tagline">
+          A full-stack trade blotter: book trades, watch them stream into a live table, and see
+          positions with correct average-cost — <strong>derived from trade history, never stored.</strong>
+        </p>
+        <div class="cta">
+          <a class="btn btn--primary" href="https://frontend-production-1237b.up.railway.app" target="_blank" rel="noopener">Live Demo →</a>
+          <a class="btn btn--ghost" href="https://backend-production-bf13.up.railway.app/positions" target="_blank" rel="noopener">Live API</a>
+        </div>
+        <div class="badges">
+          <span class="badge">C# · .NET 10</span>
+          <span class="badge">Minimal API</span>
+          <span class="badge">EF Core · SQLite</span>
+          <span class="badge">Vue 3</span>
+          <span class="badge">Pinia</span>
+          <span class="badge">Vite · TypeScript</span>
+          <span class="badge">xUnit</span>
+          <span class="badge">Vitest</span>
+          <span class="badge">Playwright</span>
+        </div>
+      </header>
+
+      <section>
+        <h2>What it does</h2>
+        <div class="grid">
+          <div class="card">
+            <span class="ico">📝</span>
+            <h3>Trade Entry</h3>
+            <p>Symbol, side, quantity, price — with validation that mirrors the server. Submits update the blotter instantly, no page reload.</p>
+          </div>
+          <div class="card">
+            <span class="ico">📊</span>
+            <h3>Live Blotter</h3>
+            <p>All trades newest-first, sortable, with notional value and color-coded Buy/Sell pills for at-a-glance scanning.</p>
+          </div>
+          <div class="card">
+            <span class="ico">📈</span>
+            <h3>Positions</h3>
+            <p>Net quantity and average cost per symbol, derived reactively. Net-zero symbols drop off automatically.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Average-cost on mixed buys / sells</h2>
+        <div class="example">
+          <div><span class="buy">Buy 100 @ 10</span>, <span class="buy">Buy 100 @ 12</span> <span class="step">→</span> <span class="res">net 200 @ 11</span></div>
+          <div><span class="sell">Sell 50 @ 15</span> <span class="step">→</span> <span class="res">net 150 @ 11</span> <span class="step">(avg unchanged — sell realizes P&amp;L)</span></div>
+          <div><span class="sell">Sell 200 @ 20</span> <span class="step">→</span> <span class="res">short 50 @ 20</span> <span class="step">(flip through zero resets avg cost)</span></div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Tested end-to-end</h2>
+        <div class="stats">
+          <div class="stat"><div class="n">65</div><div class="l">Backend tests</div></div>
+          <div class="stat"><div class="n">6</div><div class="l">Frontend unit</div></div>
+          <div class="stat"><div class="n">5</div><div class="l">Playwright E2E</div></div>
+          <div class="stat"><div class="n">76</div><div class="l">Total passing</div></div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="links">
+          <a href="business-requirements.md">Requirements</a>
+          <a href="project-architecture.md">Architecture</a>
+          <a href="tests/">Test cases</a>
+          <a href="cloud-session.md">Session log</a>
+        </div>
+        <div>Built with C# / .NET 10 &amp; Vue 3 · Original assets inspired by GoldenTree Asset Management</div>
+      </footer>
+    </div>
+  </body>
+</html>

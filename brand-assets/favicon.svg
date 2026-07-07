@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="GoldenTree">
+  <title>GoldenTree</title>
+  <!-- Bold, simplified mark for 16-32px favicon use -->
+  <rect width="32" height="32" rx="7" fill="#0F3D2E"/>
+  <g stroke-linejoin="round">
+    <rect x="14.5" y="22" width="3" height="6" rx="1" fill="#9A7B1C"/>
+    <path d="M16 5 L25 16 L7 16 Z" fill="#D4AF37"/>
+    <path d="M16 13 L27 25 L5 25 Z" fill="#D4AF37"/>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192" role="img" aria-label="GoldenTree Trade Blotter">
+  <title>GoldenTree Trade Blotter</title>
+  <!-- PWA app icon: original golden tree mark on a branded green tile -->
+  <defs>
+    <linearGradient id="gtTile192" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#124a37"/>
+      <stop offset="1" stop-color="#0B2E22"/>
+    </linearGradient>
+    <linearGradient id="gtGold192" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E6C868"/>
+      <stop offset="0.5" stop-color="#D4AF37"/>
+      <stop offset="1" stop-color="#C9A227"/>
+    </linearGradient>
+  </defs>
+  <rect width="192" height="192" rx="42" fill="url(#gtTile192)"/>
+  <rect x="3" y="3" width="186" height="186" rx="39" fill="none" stroke="#D4AF37" stroke-opacity="0.28" stroke-width="2"/>
+  <g transform="translate(96 96) scale(2.32) translate(-32 -32)" stroke-linejoin="round">
+    <rect x="28" y="44" width="8" height="15" rx="2" fill="#B5901F"/>
+    <path d="M32 6 L48 26 L16 26 Z" fill="url(#gtGold192)"/>
+    <path d="M32 19 L52 41 L12 41 Z" fill="url(#gtGold192)"/>
+    <path d="M32 32 L56 54 L8 54 Z" fill="url(#gtGold192)"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="GoldenTree mark">
+  <title>GoldenTree mark</title>
+  <!-- Original glyph inspired by GoldenTree's aesthetic — layered golden tree -->
+  <defs>
+    <linearGradient id="gtMark" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E6C868"/>
+      <stop offset="0.5" stop-color="#D4AF37"/>
+      <stop offset="1" stop-color="#C9A227"/>
+    </linearGradient>
+  </defs>
+  <g stroke-linejoin="round">
+    <rect x="28" y="44" width="8" height="15" rx="2" fill="#9A7B1C"/>
+    <path d="M32 6 L48 26 L16 26 Z" fill="url(#gtMark)"/>
+    <path d="M32 19 L52 41 L12 41 Z" fill="url(#gtMark)"/>
+    <path d="M32 32 L56 54 L8 54 Z" fill="url(#gtMark)"/>
+  </g>
+</svg>

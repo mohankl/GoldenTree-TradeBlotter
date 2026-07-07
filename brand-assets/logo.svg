@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" width="320" height="72" role="img" aria-label="GoldenTree">
+  <title>GoldenTree</title>
+  <!-- Original wordmark inspired by (not copied from) GoldenTree Asset Management -->
+  <defs>
+    <linearGradient id="gtGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E6C868"/>
+      <stop offset="0.5" stop-color="#D4AF37"/>
+      <stop offset="1" stop-color="#C9A227"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Glyph: layered golden tree -->
+  <g transform="translate(8 8)" stroke-linejoin="round">
+    <!-- trunk -->
+    <rect x="24" y="40" width="8" height="14" rx="2" fill="#9A7B1C"/>
+    <!-- canopy tiers -->
+    <path d="M28 6 L44 26 L12 26 Z" fill="url(#gtGold)"/>
+    <path d="M28 18 L48 40 L8 40 Z" fill="url(#gtGold)"/>
+    <path d="M28 30 L52 52 L4 52 Z" fill="url(#gtGold)"/>
+  </g>
+
+  <!-- Wordmark (system font stack — depends on the host system fonts) -->
+  <text x="80" y="47"
+        font-family="'Inter','Helvetica Neue',Helvetica,Arial,system-ui,sans-serif"
+        font-size="34" letter-spacing="0.2">
+    <tspan fill="#E6EAF0" font-weight="700">Golden</tspan><tspan fill="#D4AF37" font-weight="700">Tree</tspan>
+  </text>
+</svg>
