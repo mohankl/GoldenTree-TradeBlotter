@@ -2,57 +2,60 @@
    GoldenTree Trade Blotter — Brand Palette
    ---------------------------------------------------------------------
    Original design tokens inspired by GoldenTree Asset Management's
-   refined, professional aesthetic (gold + deep green + dark neutrals).
+   refined, institutional aesthetic: refined gold + deep forest green +
+   dark, green-biased trading neutrals, with clear Buy/Sell signals.
    These are ORIGINAL works, not the firm's trademarked assets.
 
-   Usage: @import "brand-assets/palette.css"; in your Vue app entry,
-   then reference tokens as var(--gt-...). Names are STABLE.
+   Usage: @import "brand-assets/palette.css"; in your app entry, then
+   reference tokens as var(--gt-...). Token NAMES are STABLE — the app
+   imports this file. Only values are tuned.
    ===================================================================== */
 
 :root {
-  /* --- Brand colors --------------------------------------------------- */
+  /* --- Brand: gold --------------------------------------------------- */
   --gt-gold:            #C9A227; /* Primary brand gold — logo, key accents        */
-  --gt-gold-bright:     #D4AF37; /* Brighter gold — hovers, highlights, emphasis  */
-  --gt-gold-soft:       #E6C868; /* Soft gold — subtle fills, focus rings         */
-  --gt-gold-deep:       #9A7B1C; /* Deep gold — pressed states, borders on gold   */
+  --gt-gold-bright:     #E3C15A; /* Brighter gold — hovers, highlights, emphasis  */
+  --gt-gold-soft:       #EFD68A; /* Soft gold — subtle fills, focus rings         */
+  --gt-gold-deep:       #9A7B1C; /* Deep gold — pressed states, trunk, borders    */
 
-  --gt-green:           #0F3D2E; /* Secondary brand — deep forest green           */
-  --gt-green-mid:       #1B5E43; /* Mid forest green — secondary surfaces/tints   */
-  --gt-green-bright:    #2E8B63; /* Brighter green — links/emphasis on dark       */
+  /* --- Brand: forest green ------------------------------------------- */
+  --gt-green:           #12563B; /* Secondary brand — deep forest green           */
+  --gt-green-mid:       #1B6B4A; /* Mid forest green — secondary surfaces/tints   */
+  --gt-green-bright:    #2FA06E; /* Brighter green — links/emphasis on dark       */
 
-  /* --- Semantic trading tokens (Buy / Sell) --------------------------- */
-  --gt-buy:             #22C55E; /* BUY — clear, accessible green                 */
-  --gt-buy-strong:      #16A34A; /* BUY pressed / strong emphasis                 */
-  --gt-buy-soft:        rgba(34, 197, 94, 0.14);  /* BUY row/tag background       */
+  /* --- Semantic trading tokens (Buy / Sell) -------------------------- */
+  --gt-buy:             #2FB47C; /* BUY — clear, accessible green                 */
+  --gt-buy-strong:      #229A66; /* BUY pressed / strong emphasis                 */
+  --gt-buy-soft:        rgba(47, 180, 124, 0.14); /* BUY row/tag background        */
 
-  --gt-sell:            #EF4444; /* SELL — clear, accessible red                  */
-  --gt-sell-strong:     #DC2626; /* SELL pressed / strong emphasis                */
-  --gt-sell-soft:       rgba(239, 68, 68, 0.14);  /* SELL row/tag background      */
+  --gt-sell:            #E5574E; /* SELL — clear, accessible red                  */
+  --gt-sell-strong:     #C93F37; /* SELL pressed / strong emphasis                */
+  --gt-sell-soft:       rgba(229, 87, 78, 0.14);  /* SELL row/tag background       */
 
   /* --- Status (informational) ---------------------------------------- */
-  --gt-info:            #38BDF8; /* Info / neutral status                         */
-  --gt-warning:         #F59E0B; /* Warning / pending                             */
+  --gt-info:            #3FB6D6; /* Info / neutral status                         */
+  --gt-warning:         #E0A62E; /* Warning / pending fills                       */
 
-  /* --- Dark-theme neutrals (trading terminal) ------------------------- */
-  --gt-bg:              #0B0F14; /* App background — near-black slate             */
-  --gt-bg-elevated:     #0F141B; /* Slightly raised background regions            */
-  --gt-surface:         #131A22; /* Cards, panels, table body                     */
-  --gt-surface-2:       #1B2530; /* Elevated surface — headers, menus, hover      */
-  --gt-surface-3:       #24303D; /* Highest surface — popovers, active rows       */
-  --gt-border:          #263241; /* Default borders / dividers                    */
-  --gt-border-strong:   #34455A; /* Emphasized borders, table gridlines           */
+  /* --- Dark, green-biased neutrals (trading terminal) ---------------- */
+  --gt-bg:              #0A0E0C; /* App background — near-black, green-biased      */
+  --gt-bg-elevated:     #0D1310; /* Slightly raised background regions            */
+  --gt-surface:         #151B16; /* Cards, panels, table body                     */
+  --gt-surface-2:       #1E261F; /* Elevated surface — headers, menus, hover      */
+  --gt-surface-3:       #28322A; /* Highest surface — popovers, active rows        */
+  --gt-border:          #2A352C; /* Default borders / dividers                    */
+  --gt-border-strong:   #3A473C; /* Emphasized borders, table gridlines           */
 
-  --gt-text:            #E6EAF0; /* Primary text                                  */
-  --gt-text-muted:      #9AA7B4; /* Secondary / muted text                        */
-  --gt-text-faint:      #64748B; /* Disabled / placeholder text                   */
-  --gt-text-on-gold:    #0B0F14; /* Text placed on a gold fill (dark for contrast)*/
-  --gt-text-on-green:   #E9F5EE; /* Text placed on a deep-green fill              */
+  --gt-text:            #E8EDE9; /* Primary text                                  */
+  --gt-text-muted:      #9AA79C; /* Secondary / muted text                        */
+  --gt-text-faint:      #64716A; /* Disabled / placeholder text                   */
+  --gt-text-on-gold:    #0A0E0C; /* Text on a gold fill (dark for contrast)        */
+  --gt-text-on-green:   #E9F5EE; /* Text on a deep-green fill                      */
 
   /* --- Focus / selection --------------------------------------------- */
-  --gt-focus-ring:      rgba(212, 175, 55, 0.55); /* Gold focus ring             */
-  --gt-selection:       rgba(212, 175, 55, 0.28); /* Text selection highlight    */
+  --gt-focus-ring:      rgba(227, 193, 90, 0.50); /* Gold focus ring              */
+  --gt-selection:       rgba(227, 193, 90, 0.28); /* Text selection highlight     */
 
-  /* --- Convenience aliases (semantic → app roles) --------------------- */
+  /* --- Convenience aliases (semantic → app roles) -------------------- */
   --gt-accent:          var(--gt-gold);
   --gt-accent-hover:    var(--gt-gold-bright);
   --gt-primary:         var(--gt-gold);

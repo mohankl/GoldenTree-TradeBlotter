@@ -1,10 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="GoldenTree">
   <title>GoldenTree</title>
-  <!-- Bold, simplified mark for 16-32px favicon use -->
-  <rect width="32" height="32" rx="7" fill="#0F3D2E"/>
+  <!-- Bold, simplified mark for 16-32px favicon use: two canopy tiers on a
+       forest-green tile. Solid gold (no gradient) stays crisp when tiny. -->
+  <rect width="32" height="32" rx="7" fill="#12563B"/>
   <g stroke-linejoin="round">
-    <rect x="14.5" y="22" width="3" height="6" rx="1" fill="#9A7B1C"/>
-    <path d="M16 5 L25 16 L7 16 Z" fill="#D4AF37"/>
-    <path d="M16 13 L27 25 L5 25 Z" fill="#D4AF37"/>
+    <rect x="14.75" y="22" width="2.5" height="5" rx="0.8" fill="#B98F20"/>
+    <path d="M16 5.5 L23 15 L9 15 Z" fill="#E3C15A"/>
+    <path d="M16 12 L26 23 L6 23 Z" fill="#E3C15A"/>
   </g>
 </svg>

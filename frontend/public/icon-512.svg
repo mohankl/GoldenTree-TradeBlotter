@@ -1,23 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="GoldenTree Trade Blotter">
   <title>GoldenTree Trade Blotter</title>
-  <!-- PWA app icon: original golden tree mark on a branded green tile -->
+  <!-- PWA app icon: original golden conifer mark on a branded forest-green
+       tile with a subtle gold hairline. -->
   <defs>
     <linearGradient id="gtTile512" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#124a37"/>
-      <stop offset="1" stop-color="#0B2E22"/>
+      <stop offset="0" stop-color="#15694A"/>
+      <stop offset="1" stop-color="#0C3626"/>
     </linearGradient>
     <linearGradient id="gtGold512" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#E6C868"/>
-      <stop offset="0.5" stop-color="#D4AF37"/>
+      <stop offset="0" stop-color="#EFD68A"/>
+      <stop offset="0.55" stop-color="#E3C15A"/>
       <stop offset="1" stop-color="#C9A227"/>
     </linearGradient>
   </defs>
   <rect width="512" height="512" rx="112" fill="url(#gtTile512)"/>
-  <rect x="6" y="6" width="500" height="500" rx="106" fill="none" stroke="#D4AF37" stroke-opacity="0.28" stroke-width="4"/>
-  <g transform="translate(256 256) scale(6.2) translate(-32 -32)" stroke-linejoin="round">
-    <rect x="28" y="44" width="8" height="15" rx="2" fill="#B5901F"/>
-    <path d="M32 6 L48 26 L16 26 Z" fill="url(#gtGold512)"/>
-    <path d="M32 19 L52 41 L12 41 Z" fill="url(#gtGold512)"/>
-    <path d="M32 32 L56 54 L8 54 Z" fill="url(#gtGold512)"/>
+  <rect x="6" y="6" width="500" height="500" rx="106" fill="none" stroke="#E3C15A" stroke-opacity="0.28" stroke-width="4"/>
+  <g transform="translate(256 256) scale(6.2) translate(-32 -31.5)" stroke-linejoin="round">
+    <rect x="28.5" y="45" width="7" height="11" rx="1.5" fill="#B98F20"/>
+    <path d="M32 7 L42.5 22 L21.5 22 Z" fill="url(#gtGold512)"/>
+    <path d="M32 18.5 L47.5 34 L16.5 34 Z" fill="url(#gtGold512)"/>
+    <path d="M32 30 L52.5 46 L11.5 46 Z" fill="url(#gtGold512)"/>
   </g>
 </svg>
