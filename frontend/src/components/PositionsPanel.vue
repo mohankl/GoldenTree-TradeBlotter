@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useBlotterStore } from '../stores/blotter'
+import { currency, qtyFmt, compactUsd } from '../format'
 
 const store = useBlotterStore()
 
 const sortedPositions = computed(() =>
   [...store.positions].sort((a, b) => a.symbol.localeCompare(b.symbol)),
 )
-
-const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-const qtyFmt = new Intl.NumberFormat('en-US', { maximumFractionDigits: 4 })
 
 function costBasis(netQuantity: number, averageCost: number): number {
   return Math.abs(netQuantity) * averageCost
@@ -22,12 +20,6 @@ const maxBasis = computed(() =>
 
 function exposureFill(netQuantity: number, averageCost: number): number {
   return Math.round((costBasis(netQuantity, averageCost) / maxBasis.value) * 100)
-}
-
-function compactUsd(n: number): string {
-  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(2)}M`
-  if (n >= 1_000) return `$${(n / 1_000).toFixed(1)}k`
-  return currency.format(n)
 }
 </script>
 

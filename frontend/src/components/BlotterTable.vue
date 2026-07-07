@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useBlotterStore } from '../stores/blotter'
+import { currency, qtyFmt } from '../format'
 import type { Trade } from '../types'
 
 const store = useBlotterStore()
@@ -37,9 +38,6 @@ const sortedTrades = computed<Trade[]>(() => {
     return cmp * dir
   })
 })
-
-const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })
-const qtyFmt = new Intl.NumberFormat('en-US', { maximumFractionDigits: 4 })
 
 function formatTime(iso: string): string {
   return new Date(iso).toLocaleString('en-US', {

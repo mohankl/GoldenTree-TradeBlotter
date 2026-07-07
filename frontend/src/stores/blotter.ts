@@ -16,14 +16,19 @@ export const useBlotterStore = defineStore('blotter', () => {
   const submitting = ref(false)
   const error = ref<string | null>(null)
 
+  /** Fetch trades + derived positions together and replace local state. */
+  async function refresh() {
+    const [t, p] = await Promise.all([api.getTrades(), api.getPositions()])
+    trades.value = t
+    positions.value = p
+  }
+
   /** Load trades and positions together (used on mount). */
   async function fetchAll() {
     loading.value = true
     error.value = null
     try {
-      const [t, p] = await Promise.all([api.getTrades(), api.getPositions()])
-      trades.value = t
-      positions.value = p
+      await refresh()
     } catch (e) {
       error.value = e instanceof Error ? e.message : 'Failed to load blotter data.'
     } finally {
@@ -42,9 +47,7 @@ export const useBlotterStore = defineStore('blotter', () => {
     try {
       const created = await api.createTrade(input)
       // Refresh derived state so blotter + positions update immediately.
-      const [t, p] = await Promise.all([api.getTrades(), api.getPositions()])
-      trades.value = t
-      positions.value = p
+      await refresh()
       return created
     } catch (e) {
       if (!(e instanceof ApiError)) {

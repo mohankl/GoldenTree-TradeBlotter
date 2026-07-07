@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted } from 'vue'
 import { useBlotterStore } from './stores/blotter'
+import { compactUsd } from './format'
 import TradeEntryForm from './components/TradeEntryForm.vue'
 import BlotterTable from './components/BlotterTable.vue'
 import PositionsPanel from './components/PositionsPanel.vue'
@@ -26,12 +27,6 @@ const netBias = computed(() => {
   if (store.positions.length === 0) return 'FLAT'
   return netExposure.value >= 0 ? 'LONG' : 'SHORT'
 })
-
-function compactUsd(n: number): string {
-  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`
-  if (n >= 1_000) return `$${(n / 1_000).toFixed(1)}k`
-  return `$${n.toFixed(0)}`
-}
 </script>
 
 <template>
