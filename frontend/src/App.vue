@@ -56,8 +56,8 @@ function compactUsd(n: number): string {
           <rect x="22.4" y="35" width="3.2" height="5.5" rx="1.2" fill="#12563b" />
         </svg>
         <div class="brand__text">
-          <h1 class="brand__name"><b>GoldenTree</b> Blotter</h1>
-          <span class="brand__sub">Trading Desk</span>
+          <h1 class="brand__name"><b>GoldenTree</b></h1>
+          <span class="brand__sub">Trade Blotter</span>
         </div>
       </div>
 
