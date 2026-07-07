@@ -82,11 +82,17 @@
 - `brand-assets/` — GoldenTree-inspired palette, logos, favicon, icons, guidelines.
 - `README.md` — setup, decisions, next steps. *(Pending.)*
 
-## Exporting the Full Transcript
+## Full Transcript (included in this repo)
 
-To include the complete raw transcript in the repo for submission:
+The complete Claude Code session transcripts are committed under [`transcript/`](transcript/):
 
-- **Claude Code CLI:** the session transcript is stored under `~/.claude/projects/<project-hash>/` as `.jsonl`. Copy the relevant session file into the repo (e.g. `transcript/`), or use the in-app export/share option.
-- Alternatively, save the terminal scrollback / conversation export to `transcript.md` and commit it alongside this log.
+| Session | Raw (authoritative) | Readable |
+|---|---|---|
+| 1 — initial build | `transcript/session-1-build.jsonl` | [`transcript/session-1-build.md`](transcript/session-1-build.md) |
+| 2 — code-clean, live validation, security bump, v1.0.0 | `transcript/session-2-clean-and-release.jsonl` | [`transcript/session-2-clean-and-release.md`](transcript/session-2-clean-and-release.md) |
 
-*This file is maintained through the session and reflects the state at last update (2026-07-07).*
+- The **`.jsonl`** files are the **complete, unedited raw** Claude Code session records — every user/assistant message, tool call, tool result, and internal reasoning event — published as-is (no cleaning, redaction, or truncation), copied verbatim from `~/.claude/projects/<project-hash>/`. These are the authoritative record.
+- The **`.md`** files are convenience renderings of the same sessions — user prompts, Claude's replies, and tool calls with (truncated) results; internal reasoning is omitted for readability. See [`transcript/README.md`](transcript/README.md).
+- Note: the session-2 export captures the conversation up to the point it was written to disk; the final turns that produced the transcript itself are necessarily not yet in the file.
+
+*This file is maintained through the session and reflects the state at last update (2026-07-07, session 2).*
