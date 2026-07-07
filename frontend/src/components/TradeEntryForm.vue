@@ -16,8 +16,23 @@ const form = reactive({
 const errors = reactive<Record<string, string>>({})
 const flash = ref<string | null>(null)
 
-/** Validate a numeric field that may arrive as a number, '', or a raw string. */
-function validateNumber(raw: number | string, label: string): string | null {
+function setError(field: string, message: string | null) {
+  if (message) errors[field] = message
+  else delete errors[field]
+}
+
+// --- Field validators (return an error message, or null when valid) ---
+
+/** A ticker is required and, per house rules, alphabetic only (e.g. AAPL). */
+function symbolError(raw: string): string | null {
+  const text = raw.trim()
+  if (text === '') return 'Symbol is required.'
+  if (!/^[A-Za-z]+$/.test(text)) return 'Symbol must be letters only.'
+  return null
+}
+
+/** A numeric field (quantity/price) must be present, numeric, and strictly positive. */
+function numberError(raw: number | string, label: string): string | null {
   const text = String(raw ?? '').trim()
   if (text === '') return `${label} must be a number.`
   const value = Number(text)
@@ -26,19 +41,34 @@ function validateNumber(raw: number | string, label: string): string | null {
   return null
 }
 
+// --- Live (on-entry) validation: keep bad input out and errors current as the user types ---
+
+/** Force upper-case and strip anything that isn't a letter, so numerals/symbols
+ *  can never be entered into the ticker in the first place, then re-validate. */
+function onSymbolInput() {
+  form.symbol = String(form.symbol).toUpperCase().replace(/[^A-Z]/g, '')
+  setError('symbol', symbolError(form.symbol))
+}
+
+function onQuantityInput() {
+  setError('quantity', numberError(form.quantity, 'Quantity'))
+}
+
+function onPriceInput() {
+  setError('price', numberError(form.price, 'Price'))
+}
+
+/** Block keys that would introduce a negative or exponent into a numeric field
+ *  (type="number" otherwise permits '-', '+', 'e'), so negatives are stopped at entry. */
+function blockNonPositiveKeys(event: KeyboardEvent) {
+  if (['-', '+', 'e', 'E'].includes(event.key)) event.preventDefault()
+}
+
+/** Full-form validation used as the final gate on submit. */
 function validate(): boolean {
-  for (const key of Object.keys(errors)) delete errors[key]
-
-  if (!String(form.symbol).trim()) {
-    errors.symbol = 'Symbol is required.'
-  }
-
-  const qtyError = validateNumber(form.quantity, 'Quantity')
-  if (qtyError) errors.quantity = qtyError
-
-  const priceError = validateNumber(form.price, 'Price')
-  if (priceError) errors.price = priceError
-
+  setError('symbol', symbolError(String(form.symbol)))
+  setError('quantity', numberError(form.quantity, 'Quantity'))
+  setError('price', numberError(form.price, 'Price'))
   return Object.keys(errors).length === 0
 }
 
@@ -82,7 +112,8 @@ async function onSubmit() {
         autocomplete="off"
         spellcheck="false"
         data-testid="symbol-input"
-        @input="form.symbol = String(form.symbol).toUpperCase()"
+        @input="onSymbolInput"
+        @blur="onSymbolInput"
       />
       <span v-if="errors.symbol" class="err" data-testid="symbol-error">{{ errors.symbol }}</span>
     </div>
@@ -125,6 +156,8 @@ async function onSubmit() {
         inputmode="decimal"
         placeholder="100"
         data-testid="quantity-input"
+        @input="onQuantityInput"
+        @keydown="blockNonPositiveKeys"
       />
       <span v-if="errors.quantity" class="err" data-testid="quantity-error">{{ errors.quantity }}</span>
     </div>
@@ -142,6 +175,8 @@ async function onSubmit() {
         inputmode="decimal"
         placeholder="210.50"
         data-testid="price-input"
+        @input="onPriceInput"
+        @keydown="blockNonPositiveKeys"
       />
       <span v-if="errors.price" class="err" data-testid="price-error">{{ errors.price }}</span>
     </div>

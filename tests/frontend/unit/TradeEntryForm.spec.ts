@@ -103,4 +103,31 @@ describe('TradeEntryForm validation (U-F01…U-F06)', () => {
 
     expect(submit).toHaveBeenCalledWith(expect.objectContaining({ side: 'Sell', symbol: 'MSFT' }))
   })
+
+  it('U-F07: strips digits/symbols from the ticker as it is entered (letters only)', async () => {
+    const { wrapper } = mountForm()
+    await fill(wrapper, { 'symbol-input': 'a1a2-pl.' })
+
+    const sym = wrapper.find('[data-testid="symbol-input"]').element as HTMLInputElement
+    expect(sym.value).toBe('AAPL')
+    expect(wrapper.find('[data-testid="symbol-error"]').exists()).toBe(false)
+  })
+
+  it('U-F08: shows a quantity error on entry (before submit) for a non-positive value', async () => {
+    const { wrapper, submit } = mountForm()
+    await fill(wrapper, { 'quantity-input': '0' })
+
+    // Error is present without ever triggering submit.
+    expect(wrapper.find('[data-testid="quantity-error"]').text()).toMatch(/positive/i)
+    expect(submit).not.toHaveBeenCalled()
+  })
+
+  it('U-F09: shows a price error on entry (before submit) for a non-numeric/empty value', async () => {
+    const { wrapper } = mountForm()
+    await fill(wrapper, { 'price-input': '10' })
+    expect(wrapper.find('[data-testid="price-error"]').exists()).toBe(false)
+
+    await fill(wrapper, { 'price-input': '' })
+    expect(wrapper.find('[data-testid="price-error"]').exists()).toBe(true)
+  })
 })

@@ -7,8 +7,14 @@ import { test, expect, type Page } from '@playwright/test'
  */
 
 // Unique-ish symbol per test run without relying on Math.random (varied by suffix).
+// Tickers are letters-only (enforced by the trade form), so the time-based suffix is
+// encoded as letters: each digit 0-9 maps to A-J, preserving uniqueness.
 function sym(base: string): string {
-  return `${base}${Date.now().toString().slice(-5)}`
+  const suffix = Date.now()
+    .toString()
+    .slice(-5)
+    .replace(/[0-9]/g, (d) => 'ABCDEFGHIJ'[Number(d)])
+  return `${base}${suffix}`
 }
 
 async function bookTrade(
