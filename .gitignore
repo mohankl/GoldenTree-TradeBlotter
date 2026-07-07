@@ -26,3 +26,6 @@ blob-report/
 .vscode/
 .idea/
 *.swp
+
+# ---- Agent scratch ----
+.claude/
