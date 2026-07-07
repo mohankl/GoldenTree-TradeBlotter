@@ -1,0 +1,28 @@
+# ---- .NET ----
+bin/
+obj/
+*.user
+# SQLite database files (created at runtime)
+*.db
+*.db-shm
+*.db-wal
+
+# ---- Node / Vite ----
+# Trailing slash: ignore real node_modules directories, but NOT the
+# tests/frontend/node_modules symlink that bridges to frontend/node_modules.
+node_modules/
+dist/
+.vite/
+*.local
+
+# ---- Playwright ----
+test-results/
+playwright-report/
+blob-report/
+.playwright/
+
+# ---- Editor / OS ----
+.DS_Store
+.vscode/
+.idea/
+*.swp
