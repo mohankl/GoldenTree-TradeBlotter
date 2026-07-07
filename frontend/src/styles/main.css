@@ -1,0 +1,152 @@
+/*
+ * Global styles for the GoldenTree Trade Blotter — "Trading Desk" redesign.
+ * A committed dark trading-terminal world: gold + forest-green accents with
+ * green-biased dark neutrals, monospaced tabular numerics, side-striped rows.
+ * Brand hues also live in ./palette.css; the app-level tokens below are the
+ * single source used by components.
+ */
+
+:root {
+  /* Brand */
+  --gold: #c9a227;
+  --gold-bright: #e3c15a;
+  --gold-deep: #9a7b1c;
+  --forest: #12563b;
+
+  /* Semantics — Buy/Sell */
+  --buy: #2fb47c;
+  --buy-dim: #123a2a;
+  --sell: #e5574e;
+  --sell-dim: #3a1a18;
+
+  /* Green-biased dark neutrals (chosen, not default grey) */
+  --bg: #0a0e0c;
+  --panel: #10150f;
+  --surface: #151b16;
+  --surface-2: #1c241e;
+  --line: #28322a;
+  --line-soft: #1f271f;
+
+  /* Text */
+  --text: #e9efe8;
+  --muted: #93a197;
+  --faint: #64726a;
+
+  /* Type */
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --mono: 'SF Mono', 'JetBrains Mono', 'Roboto Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --r: 12px;
+  --r-sm: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background:
+    radial-gradient(1100px 460px at 78% -8%, rgba(201, 162, 39, 0.09), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 650;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Numerics: monospaced, tabular figures for clean columns. */
+.num {
+  font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Reusable panel */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+
+.panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel__title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 12px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.panel__title::before {
+  content: '';
+  width: 3px;
+  height: 13px;
+  border-radius: 2px;
+  background: var(--gold);
+}
+
+.panel__meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--faint);
+}
+
+/* Buy/Sell pill — at-a-glance side cue */
+.side-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.side-pill::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.side-pill--buy {
+  color: var(--buy);
+  background: var(--buy-dim);
+}
+
+.side-pill--sell {
+  color: var(--sell);
+  background: var(--sell-dim);
+}

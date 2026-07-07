@@ -1,0 +1,62 @@
+/* =====================================================================
+   GoldenTree Trade Blotter — Brand Palette
+   ---------------------------------------------------------------------
+   Original design tokens inspired by GoldenTree Asset Management's
+   refined, professional aesthetic (gold + deep green + dark neutrals).
+   These are ORIGINAL works, not the firm's trademarked assets.
+
+   Usage: @import "brand-assets/palette.css"; in your Vue app entry,
+   then reference tokens as var(--gt-...). Names are STABLE.
+   ===================================================================== */
+
+:root {
+  /* --- Brand colors --------------------------------------------------- */
+  --gt-gold:            #C9A227; /* Primary brand gold — logo, key accents        */
+  --gt-gold-bright:     #D4AF37; /* Brighter gold — hovers, highlights, emphasis  */
+  --gt-gold-soft:       #E6C868; /* Soft gold — subtle fills, focus rings         */
+  --gt-gold-deep:       #9A7B1C; /* Deep gold — pressed states, borders on gold   */
+
+  --gt-green:           #0F3D2E; /* Secondary brand — deep forest green           */
+  --gt-green-mid:       #1B5E43; /* Mid forest green — secondary surfaces/tints   */
+  --gt-green-bright:    #2E8B63; /* Brighter green — links/emphasis on dark       */
+
+  /* --- Semantic trading tokens (Buy / Sell) --------------------------- */
+  --gt-buy:             #22C55E; /* BUY — clear, accessible green                 */
+  --gt-buy-strong:      #16A34A; /* BUY pressed / strong emphasis                 */
+  --gt-buy-soft:        rgba(34, 197, 94, 0.14);  /* BUY row/tag background       */
+
+  --gt-sell:            #EF4444; /* SELL — clear, accessible red                  */
+  --gt-sell-strong:     #DC2626; /* SELL pressed / strong emphasis                */
+  --gt-sell-soft:       rgba(239, 68, 68, 0.14);  /* SELL row/tag background      */
+
+  /* --- Status (informational) ---------------------------------------- */
+  --gt-info:            #38BDF8; /* Info / neutral status                         */
+  --gt-warning:         #F59E0B; /* Warning / pending                             */
+
+  /* --- Dark-theme neutrals (trading terminal) ------------------------- */
+  --gt-bg:              #0B0F14; /* App background — near-black slate             */
+  --gt-bg-elevated:     #0F141B; /* Slightly raised background regions            */
+  --gt-surface:         #131A22; /* Cards, panels, table body                     */
+  --gt-surface-2:       #1B2530; /* Elevated surface — headers, menus, hover      */
+  --gt-surface-3:       #24303D; /* Highest surface — popovers, active rows       */
+  --gt-border:          #263241; /* Default borders / dividers                    */
+  --gt-border-strong:   #34455A; /* Emphasized borders, table gridlines           */
+
+  --gt-text:            #E6EAF0; /* Primary text                                  */
+  --gt-text-muted:      #9AA7B4; /* Secondary / muted text                        */
+  --gt-text-faint:      #64748B; /* Disabled / placeholder text                   */
+  --gt-text-on-gold:    #0B0F14; /* Text placed on a gold fill (dark for contrast)*/
+  --gt-text-on-green:   #E9F5EE; /* Text placed on a deep-green fill              */
+
+  /* --- Focus / selection --------------------------------------------- */
+  --gt-focus-ring:      rgba(212, 175, 55, 0.55); /* Gold focus ring             */
+  --gt-selection:       rgba(212, 175, 55, 0.28); /* Text selection highlight    */
+
+  /* --- Convenience aliases (semantic → app roles) --------------------- */
+  --gt-accent:          var(--gt-gold);
+  --gt-accent-hover:    var(--gt-gold-bright);
+  --gt-primary:         var(--gt-gold);
+  --gt-secondary:       var(--gt-green);
+  --gt-success:         var(--gt-buy);
+  --gt-danger:          var(--gt-sell);
+}
